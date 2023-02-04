@@ -23,7 +23,7 @@ void PrintMatrix (int[,] matrix)
          {
            Console.Write(matrix[i,j]+"\t");
          }
-         Console.WriteLine(); 
+         Console.WriteLine();
     }
 }
 int? FiendValue (int[,] matrix, int fristIndex, int secondIndex)

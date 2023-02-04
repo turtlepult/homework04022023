@@ -1,7 +1,7 @@
 ﻿// Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
 double[,] CreateMatrix (int m, int n)
 {
-   Random random = new Random();
+   Random random = new();
    double[,] matrix = new double[m, n];
    for (int i = 0; i < matrix.GetLength(0); i++)
    {
