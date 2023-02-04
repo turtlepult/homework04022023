@@ -47,4 +47,12 @@ Console.WriteLine("Ваша матрица: ");
 PrintMatrix(matrix);
 int fristIndex = ReadInt("Введите нидекс строки:");
 int secondIndex = ReadInt("Введите индекс столбца: ");
-Console.Write("Число стоящее на позиции ["+fristIndex+", "+secondIndex+"]: "+ FiendValue(matrix, fristIndex, secondIndex));
+int? res =  FiendValue(matrix, fristIndex, secondIndex);
+if (res==null)
+{
+    Console.Write("такого элеманта нет");
+}
+else
+{
+    Console.Write("Число стоящее на позиции ["+fristIndex+", "+secondIndex+"]: "+ res);
+}
