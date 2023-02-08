@@ -1,18 +1,18 @@
-﻿// Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
-double[,] CreateMatrix (int m, int n)
+﻿// Написать программу, которая обменивает элементы первой строки и последней строки
+int[,] CreateFillMatrix(int line, int columns)
 {
-   Random random = new();
-   double[,] matrix = new double[m, n];
-   for (int i = 0; i < matrix.GetLength(0); i++)
-   {
+    int[,]matrix = new int[line,columns];
+    Random random = new();
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i,j]=random.NextDouble()*20;
+            matrix[i,j] = random.Next(1,10);
         }
-   }
-   return matrix;
+    }
+    return matrix;
 }
-void PrintMatrix(double[,] matrix)
+void PrintMatrix(int[,] matrix)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
@@ -23,13 +23,26 @@ void PrintMatrix(double[,] matrix)
         Console.WriteLine();
     }
 }
-int ReadInt(string message)
+int InputValue(string message)
 {
-    Console.Write(message);
+    Console.WriteLine(message);
     return int.Parse(Console.ReadLine()??"0");
 }
+int[,] SwitchPositionfirstlineAndLastLine(int[,] switchMatrix, int line)
+{
+        for (int j = 0; j < switchMatrix.GetLength(1); j++)
+        {
+            int tempvariable = switchMatrix[0,j];
+            switchMatrix[0,j] = switchMatrix[line-1, j];
+            switchMatrix[line-1, j] = tempvariable;
+        }
+   return switchMatrix;
+}
 
-int m = ReadInt("enter amount of colums: ");
-int n = ReadInt("enter amount of n: ");
-double[,] matrix = CreateMatrix(m,n);
-PrintMatrix(matrix);
+int line = InputValue("Введите количество строк: ");
+int columns = InputValue("Введите количество столбцов: ");
+int[,] mainMatrix = CreateFillMatrix(line, columns);
+Console.WriteLine("Ваша матрица: ");
+PrintMatrix(mainMatrix);
+Console.WriteLine("Измененная матрица: ");
+PrintMatrix(SwitchPositionfirstlineAndLastLine(mainMatrix, line));
